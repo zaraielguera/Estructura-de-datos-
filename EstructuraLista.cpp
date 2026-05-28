@@ -1,12 +1,4 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-int main(int argc, char** argv) {
-	return 0;
-}
-
+// ESTRUCTURA 
 struct Prenda {
     int codigo;
     string nombre;
@@ -19,6 +11,7 @@ struct Prenda {
 
 Prenda* inicioLista = NULL;
 
+// FUNCIONES
 void registrarPrenda() {
 
     Prenda* nuevo = new Prenda();
