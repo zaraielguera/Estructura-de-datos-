@@ -1,0 +1,65 @@
+// ESTRUCTURA PILA
+
+
+struct Descartada {
+    string nombre;
+
+    Descartada* siguiente;
+};
+
+Descartada* tope = NULL;
+
+// FUNCIONES PILA
+
+void agregarDescartada() {
+
+    Descartada* nuevo = new Descartada();
+
+    cin.ignore();
+
+    cout << "\nNombre de la prenda descartada: ";
+    getline(cin, nuevo->nombre);
+
+    nuevo->siguiente = tope;
+
+    tope = nuevo;
+
+    cout << "\nPrenda agregada a la pila.\n";
+}
+
+void devolverPrenda() {
+
+    if (tope == NULL) {
+
+        cout << "\nNo hay prendas pendientes.\n";
+        return;
+    }
+
+    Descartada* auxiliar = tope;
+
+    cout << "\nPrenda devuelta: " << auxiliar->nombre << endl;
+
+    tope = tope->siguiente;
+
+    delete auxiliar;
+}
+
+void mostrarPila() {
+
+    if (tope == NULL) {
+
+        cout << "\nPila vacia.\n";
+        return;
+    }
+
+    Descartada* auxiliar = tope;
+
+    cout << "\n--- PRENDAS DESCARTADAS ---\n";
+
+    while (auxiliar != NULL) {
+
+        cout << auxiliar->nombre << endl;
+
+        auxiliar = auxiliar->siguiente;
+    }
+}
