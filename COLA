@@ -1,0 +1,71 @@
+//ESTRUCTURA 
+struct Cliente {
+    string nombre;
+
+    Cliente* siguiente;
+};
+
+Cliente* frente = NULL;
+Cliente* finalCola = NULL;
+// FUNCIONES 
+void ingresarCliente() {
+
+    Cliente* nuevo = new Cliente();
+
+    cin.ignore();
+
+    cout << "\nNombre del cliente: ";
+    getline(cin, nuevo->nombre);
+
+    nuevo->siguiente = NULL;
+
+    if (frente == NULL) {
+
+        frente = nuevo;
+        finalCola = nuevo;
+
+    } else {
+
+        finalCola->siguiente = nuevo;
+        finalCola = nuevo;
+    }
+
+    cout << "\nCliente agregado a la cola.\n";
+}
+
+void atenderCliente() {
+
+    if (frente == NULL) {
+
+        cout << "\nNo hay clientes en espera.\n";
+        return;
+    }
+
+    Cliente* auxiliar = frente;
+
+    cout << "\nCliente atendido: " << auxiliar->nombre << endl;
+
+    frente = frente->siguiente;
+
+    delete auxiliar;
+}
+
+void mostrarCola() {
+
+    if (frente == NULL) {
+
+        cout << "\nCola vacia.\n";
+        return;
+    }
+
+    Cliente* auxiliar = frente;
+
+    cout << "\n--- CLIENTES EN ESPERA ---\n";
+
+    while (auxiliar != NULL) {
+
+        cout << auxiliar->nombre << endl;
+
+        auxiliar = auxiliar->siguiente;
+    }
+}
